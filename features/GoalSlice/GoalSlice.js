@@ -48,6 +48,7 @@ const GoalSlice = createSlice({
                 action.payload.goal, 
                 state.goalsList
             );
+            console.log(action.payload);
             if(index < 0) return;
             const total = state.goalsList[index].totalSteps;
             const complete = state.goalsList[index].completedSteps;

@@ -40,7 +40,7 @@ const AddNewPomodoro = () => {
                     legend='Does it complete A Todo Task?'
                     onChange={handler.handleRelatedChange}
                     items={handler.filterTodos}
-                    value={form.todo}
+                    value={form.relatedTodo.todo}
                     doesRelate={form.relatedTodo.doesRelate}
                     onRadioChange={handler.handleRadioChange}
                 />

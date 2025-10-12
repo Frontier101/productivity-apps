@@ -11,14 +11,23 @@ import ToggleBtn from "../../../GenericComponents/ToggleBtn";
 import AddNewForm from "../../../GenericComponents/AddNewForm";
 import FormModal from "../../../GenericComponents/FormModal";
 import useNewTodo from "../../../hooks/useNewTodo";
+import Related from "../../../GenericComponents/Related";
+import { DeadlinePeriod } from "../../../features/GoalSlice/GoalHelpers";
 
 
 const AddNewToDo = ({isMobOrTab}) => {
     const [openSettings, setOpenSettings] = useState(false);
 
-    const { categories, currentCategory } = useSelector(state => state.todo);
+    const { categories, currentCategory, goal, relatedToGoal } = useSelector(state => state.todo);
+    const { goalsList } = useSelector(state => state.goals);
+    console.log("goalsList:", goalsList);
+
+    const filteredGoals = goalsList.filter(goal => 
+        DeadlinePeriod(goal.deadline) !== 'overdue' &&
+        goal.totalSteps > goal.completedSteps
+    )
     
-    const hookData = useNewTodo(isMobOrTab);
+    const hookData = useNewTodo(isMobOrTab, filteredGoals);
 
     function handleSettings(){
         setOpenSettings(!openSettings);
@@ -54,7 +63,14 @@ const AddNewToDo = ({isMobOrTab}) => {
                     </div>
                     { openSettings && <Categories />}
                     <Priority />
-                    <RelatedGoal />
+                    <Related 
+                        legend='Does This Task Relate To A Goal?'
+                        value={goal}
+                        onChange={hookData.handleRelateChange}
+                        items={filteredGoals}
+                        onRadioChange={hookData.handleRadioChange}
+                        doesRelate={relatedToGoal === 'yes'}
+                    />
                 </div>
             </AddNewForm>
         </FormModal>

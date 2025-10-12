@@ -35,7 +35,7 @@ const ToDoSlice = createSlice({
             const date = new Date().toISOString();
             const id = setId(state.todoList)
             const goal = (
-                state.relatedToGoal==='yes' 
+                state.relatedToGoal === 'yes' 
                 ? state.goal : null
             );
 

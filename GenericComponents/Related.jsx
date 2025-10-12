@@ -5,6 +5,9 @@ import SelectItems from './SelectItems';
 
 const Related = ({legend, onChange, items, value, onRadioChange, doesRelate}) => {
 
+    console.log('item: ',items);
+    console.log('value: ',value);
+
     return (
         <div className='space-y-2 h-35 mb-4 '>
             <fieldset className='border p-2'>
