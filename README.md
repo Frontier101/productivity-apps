@@ -3,6 +3,8 @@ A compact, focused productivity suite that combines three tools in one place: a 
 
 **Tech stack**:  JavaScript, Redux, Redux, Tailwind CSS, Framer Motion
 ## Demo/Quick Intro
+**Live Demo :** https://frontier101.github.io/productivity-apps/
+
 In One Sentence: Capture a task --> link it to a goal --> use the Pomodoro timer to focus and track sessions.
 
 ![ToDo App](https://github.com/Frontier101/screenshots/blob/main/ToDo%20app.png?raw=true) 
